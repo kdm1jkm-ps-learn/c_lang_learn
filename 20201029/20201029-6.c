@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// return 1: prime number
+// return -1: Invalid paramater
+// return other number: paramter cna be devided into returned number.
 int isPrime(int num)
 {
     if (num < 2)
