@@ -9,23 +9,28 @@ int main()
     printf("Enter minor axis>>");
     scanf("%d", &minorAxis);
 
-    int degree = (majorAxis - 1) / (minorAxis / 2 - 1);
-    printf("deg: %d\n", degree);
-
     for (int i = 0; i < minorAxis; i++)
     {
-        int temp = majorAxis - i * degree - majorAxis / 2;
-        if (temp < 0)
-            temp *= -1;
-        for (int j = 0; j < temp; j++)
-        {
-            printf(" . ");
-        }
-        for (int j = 0; j < (majorAxis / 2 - temp) * 2 + 1; j++)
-        {
-            printf("%02d ", j + 1);
-        }
+        int temp = i * majorAxis / minorAxis;
 
+        int blankLimit1 = majorAxis / 2 - temp - 1;
+        int blankLimit2 = -majorAxis / 2 + temp - 1;
+        int blankLimit = (blankLimit1 > blankLimit2) ? blankLimit1 : blankLimit2;
+
+        int numLimit1 = majorAxis / 2 + temp;
+        int numLimit2 = majorAxis * 3 / 2 - temp;
+        // int numLimit = (numLimit1 < numLimit2) ? numLimit1 : numLimit2;
+        int numLimit = majorAxis - blankLimit;
+
+        int j;
+        for (j = 0; j < blankLimit; j++)
+        {
+            printf("  ");
+        }
+        for (; j < numLimit; j++)
+        {
+            printf("%02d", j);
+        }
         printf("\n");
     }
 }
